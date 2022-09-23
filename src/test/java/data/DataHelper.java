@@ -37,7 +37,17 @@ public class DataHelper {
     public static CardInfo giveAnyCardNumber() {
         return new CardInfo("1111 1111 1111 1111", "10", "25", "Ivanov Ivan", "123");
     }
+
+    public static CardInfo allFieldsAreInvalidData() {
+        return new CardInfo("1111 1111 asd*", "1", "1", "11 ++", "asd");
+    }
+
+    public static CardInfo giveValidDataOfTheApprovedCardExpired() {
+        return new CardInfo("1111 2222 3333 4444", "10", "20", "Ivanov Ivan", "123");
+    }
+
     public static CardInfo giveEmptyFields() {
         return new CardInfo("", "", "", "", "");
     }
+
 }

@@ -21,7 +21,7 @@ public class PaymentPage {
     private SelenideElement cardNumberError = $(byText("Номер карты")).parent().$(".input__sub");
     private SelenideElement monthError = $(byText("Месяц")).parent().$(".input__sub");
     private SelenideElement yearError = $(byText("Год")).parent().$(".input__sub");
-    private SelenideElement expiredCardError = $(byText("Истек срок действия карты")).parent().$(".input__sub");
+    private SelenideElement expiredCardError = $(byText("Истёк срок действия карты")).parent().$(".input__sub");
     private SelenideElement ownerError = $(byText("Владелец")).parent().$(".input__sub");
     private SelenideElement cvcError = $(byText("CVC/CVV")).parent().$(".input__sub");
 

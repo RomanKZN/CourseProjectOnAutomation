@@ -81,15 +81,35 @@ public class TestFormPayment {
     }
 
     @Test
-    void shouldNotApproveTheOperationWithAnUnregisteredCard(){
+    void shouldNotApproveTheOperationWithAnUnregisteredCard() {
         var cardInfo = DataHelper.giveAnyCardNumber();
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCard();
         paymentPage.fillForm(cardInfo);
         paymentPage.declinedPayment();
-
     }
 
+    @Test
+    void mustNotPassExpired(){
+        var cardInfo = DataHelper.giveValidDataOfTheApprovedCardExpired();
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCard();
+        paymentPage.fillForm(cardInfo);
+        paymentPage.expiredCardErrorVisible();
+    }
+
+    @Test
+    void allFieldsInvalidData() {
+        var cardInfo = DataHelper.allFieldsAreInvalidData();
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCard();
+        paymentPage.fillForm(cardInfo);
+        paymentPage.cardNumberErrorVisible();
+        paymentPage.monthErrorVisible();
+        paymentPage.yearErrorVisible();
+        paymentPage.ownerErrorVisible();
+        paymentPage.cvcErrorVisible();
+    }
 }
 
 
