@@ -1,21 +1,33 @@
 package test;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import data.DBUtils;
 import data.DataHelper;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.model.Status;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import page.MainPage;
 
 import static com.codeborne.selenide.Selenide.clearBrowserLocalStorage;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openqa.selenium.devtools.v102.network.Network.clearBrowserCookies;
 
 public class TestFormPayment {
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
     @BeforeEach
     void setup() {
         open("http://localhost:8080");
+        DBUtils.cleanTable();
         Configuration.holdBrowserOpen = true;
     }
 
@@ -109,6 +121,27 @@ public class TestFormPayment {
         paymentPage.yearErrorVisible();
         paymentPage.ownerErrorVisible();
         paymentPage.cvcErrorVisible();
+    }
+
+    //Запрос в бд
+    @Test
+    void shouldPayByCardSuccessfully2() {
+        var cardInfo = DataHelper.giveValidDataOfTheApprovedCard();
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCard();
+        paymentPage.fillForm(cardInfo);
+        paymentPage.successfulPayment();
+        assertEquals("APPROVED",DBUtils.getPaymentStatus());
+    }
+
+    @Test
+    void shouldRefuseToPerformTheOperation2() {
+        var cardInfo = DataHelper.giveValidDataOfTheDeclinedCard();
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCard();
+        paymentPage.fillForm(cardInfo);
+        paymentPage.declinedPayment();
+        assertEquals("DECLINED",DBUtils.getPaymentStatus());
     }
 }
 
