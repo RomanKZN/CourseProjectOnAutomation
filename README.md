@@ -4,7 +4,7 @@
 ***
 Приложение представляет из себя веб-сервис.
 
-![](pic/service.png)
+[![11.png](https://i.postimg.cc/hPLryjQS/11.png)](https://postimg.cc/mtrChTSq)
 
 Приложение предлагает купить тур по определённой цене с помощью двух способов:
 1. Обычная оплата по дебетовой карте
@@ -24,7 +24,7 @@
     https://github.com/RomanKZN/CourseProjectOnAutomation
 ```
 2.  Открыть проект в IntelliJ IDEA
-3.  Запустить контейнеры БД командой *docker-compose up* ([руководство по установке Docker](https://github.com/netology-code/aqa-homeworks/blob/master/docker/installation.md))
+3.  Запустить контейнеры БД в терминале командой *docker-compose up* ([руководство по установке Docker](https://github.com/netology-code/aqa-homeworks/blob/master/docker/installation.md))
 4.  Ввести в терминале команду  *java -jar artifacts/aqa-shop.jar -p:jdbs.url=j
     dbs:mysql://localhost:3306/app -P:jdbc.user=app -P:jdbc.password=pass*
 5.  Открыть в браузере адрес http://localhost:8080/
