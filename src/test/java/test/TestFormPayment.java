@@ -50,7 +50,7 @@ public class TestFormPayment {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.successfulPayment();
+        paymentPage.checkTheResultOfASuccessfulPayment();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestFormPayment {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.declinedPayment();
+        paymentPage.checkDeclinedPaymentResult();
     }
 
     @Test
@@ -98,7 +98,7 @@ public class TestFormPayment {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.declinedPayment();
+        paymentPage.checkDeclinedPaymentResult();
     }
 
     @Test
@@ -130,7 +130,7 @@ public class TestFormPayment {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.successfulPayment();
+        paymentPage.checkTheResultOfASuccessfulPayment();
         assertEquals("APPROVED",DBUtils.getPaymentStatus());
     }
 
@@ -140,7 +140,7 @@ public class TestFormPayment {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCard();
         paymentPage.fillForm(cardInfo);
-        paymentPage.declinedPayment();
+        paymentPage.checkDeclinedPaymentResult();
         assertEquals("DECLINED",DBUtils.getPaymentStatus());
     }
 }

@@ -67,11 +67,11 @@ public class PaymentPage {
         cvcError.shouldBe(visible);
     }
 
-    public void successfulPayment() {
+    public void checkTheResultOfASuccessfulPayment() {
         $(".notification_status_ok").shouldBe(visible, Duration.ofSeconds(30));
     }
 
-    public void declinedPayment() {
+    public void checkDeclinedPaymentResult() {
         $(byCssSelector("div.notification.notification_status_error.notification_has-closer.notification_stick-to_right.notification_theme_alfa-on-white")).shouldBe(visible, Duration.ofSeconds(20));
     }
 

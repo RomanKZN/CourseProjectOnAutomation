@@ -27,15 +27,14 @@ public class DBUtils {
 
     @SneakyThrows
     public static String getPaymentStatus() {
-        String statusSQL = "SELECT status FROM payment_entity";
+        var statusSQL = "SELECT status FROM payment_entity";
         return getStatus(statusSQL);
     }
 
     @SneakyThrows
     private static String getStatus(String query) {
-        var runner = new QueryRunner();
         try (var conn = getConn()) {
-            String status = runner.query(conn, query, new ScalarHandler<String>());
+            var status = runner.query(conn, query, new ScalarHandler<String>());
             return status;
         }
     }

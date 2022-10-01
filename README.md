@@ -25,8 +25,7 @@
 ```
 2.  Открыть проект в IntelliJ IDEA
 3.  Запустить контейнеры БД в терминале командой *docker-compose up* ([руководство по установке Docker](https://github.com/netology-code/aqa-homeworks/blob/master/docker/installation.md))
-4.  Ввести в терминале команду  *java -jar artifacts/aqa-shop.jar -p:jdbs.url=j
-    dbs:mysql://localhost:3306/app -P:jdbc.user=app -P:jdbc.password=pass*
+4.  Ввести в терминале команду  *java -jar artifacts/aqa-shop.jar*
 5.  Открыть в браузере адрес http://localhost:8080/
 
 #### Запуск теста
@@ -34,6 +33,9 @@
 ```
 gradlew clean test
 ```
+или ввести в терминале  *./gradlew test*.
+Так же можно открыть файл TestFormPayment и запустить тест с помощью горячих клавиш Ctrl+Shift+F10
+
 #### Генерация отчета и автоматическое открытие в браузере 
 В IntelliJ IDEA нажать два раза *ctrl*  в появившемся окне ввести
 ```
